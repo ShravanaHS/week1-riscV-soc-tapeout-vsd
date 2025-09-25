@@ -151,6 +151,7 @@ Use a text editor such as `gedit`:
 gedit alu.v
 alu_tb.v
 ```
+![FIles Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/files.png)
 Write both your RTL modules and testbench files here.
 
 ### b. Compile the Code
@@ -162,6 +163,8 @@ or
 ```
 iverilog alu.v alu_tb.v -o alu_sim
 ```
+
+![iverilog Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/iverilog.png)
 This compiles the Verilog code into an executable simulation file `alu_sim`.
 
 ### c. Run the Simulation
@@ -215,7 +218,7 @@ When GTKWave opens:
 - Zoom/Scroll → Use toolbar buttons or mouse to zoom in/out and navigate.
 
 
-![GTKWave Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/synthess.png)
+![GTKWave Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/wave.png)
 
 ---
 
@@ -281,16 +284,7 @@ Exit yosys
 ```
 exit
 ```
-*Insert Yosys Block Diagrams*  
-![Yosys Modules](./images/module.png)  
-![Yosys Read Verilog](./images/read_verilog.png)  
-![Yosys Synth](./images/synth.png)  
-![Yosys Map 1](./images/map_1.png)  
-![Yosys Map 2](./images/map_2.png)  
-![Yosys Netlist](./images/netlist.png)  
-![Yosys Netlist Open](./images/netlist_open.png)  
-![Yosys Show](./images/show.png)
-
+![yosys Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/netlist.png)
 ---
 
 ## 8. Summary
