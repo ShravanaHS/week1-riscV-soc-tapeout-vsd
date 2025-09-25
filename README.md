@@ -6,27 +6,11 @@
 
 # Table of Contents
 
-- [Day 1: Introduction to RTL Design, Simulation & Synthesis](#day-1-introduction-to-rtl-design-simulation--synthesis)
-  - [Overview of RTL Design Flow](#overview-of-rtl-design-flow)
-  - [RTL Design and Simulation Theory](#rtl-design-and-simulation-theory)
-    - [What is RTL Design?](#what-is-rtl-design)
-    - [Simulation in RTL Design](#simulation-in-rtl-design)
-  - [Block Diagram for RTL Simulation](#block-diagram-for-rtl-simulation)
-  - [Step-by-Step Simulation Using Icarus Verilog](#step-by-step-simulation-using-icarus-verilog)
-    - [Writing Verilog Code and Testbench](#writing-verilog-code-and-testbench)
-    - [Compile the Code](#compile-the-code)
-    - [Run the Simulation](#run-the-simulation)
-  - [Waveform Visualization Using GTKWave](#waveform-visualization-using-gtkwave)
-    - [Ensuring VCD Dump in Testbench](#ensuring-vcd-dump-in-testbench)
-    - [Open GTKWave](#open-gtkwave)
-    - [Explore GTKWave GUI](#explore-gtkwave-gui)
-  - [Synthesis Theory](#synthesis-theory)
-    - [What is Synthesis?](#what-is-synthesis)
-    - [Synthesizer](#synthesizer)
-  - [Synthesizing Using Yosys](#synthesizing-using-yosys)
-    - [Preparing for Synthesis](#preparing-for-synthesis)
-    - [Running Yosys Commands](#running-yosys-commands)
-  - [Summary](#summary)
+- [Overview of RTL Design Flow](#1-overview-of-rtl-design-flow)
+- [Step-by-Step Simulation Using Icarus Verilog](#4-step-by-step-simulation-using-icarus-verilog)
+- [Waveform Visualization Using GTKWave](#5-waveform-visualization-using-gtkwave)
+- [Synthesizing Using Yosys](#7-synthesizing-using-yosys)
+
 
 
 ## 1. Overview of RTL Design Flow
