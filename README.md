@@ -164,6 +164,7 @@ iverilog alu.v alu_tb.v -o alu_sim
 ```
 
 ![iverilog Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/iverilog.png)
+
 This compiles the Verilog code into an executable simulation file `alu_sim`.
 
 ### c. Run the Simulation
