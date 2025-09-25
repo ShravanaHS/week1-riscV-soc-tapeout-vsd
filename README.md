@@ -14,8 +14,8 @@ Register-Transfer Level (RTL) design is a critical stage in digital hardware des
 
 ### What is RTL Design?
 
-- RTL Design expresses the functionality of a digital circuit by describing how registers transfer data based on clock cycles and how combinational logic processes this data.
-- Written in Verilog or VHDL, RTL is the interface between high-level system design and hardware.
+ RTL Design expresses the functionality of a digital circuit by describing how registers transfer data based on clock cycles and how combinational logic processes this data.
+ Written in Verilog or VHDL, RTL is the interface between high-level system design and hardware.
 
 ### Simulation in RTL Design
 
@@ -54,24 +54,22 @@ Register-Transfer Level (RTL) design is a critical stage in digital hardware des
 ---
 
 ## 4. Step-by-Step Simulation Using Icarus Verilog
-- Simulation is the process of using software tools to mimic the behavior of a digital circuit described in RTL and verify it before implementing it.
+Simulation is the process of using software tools to mimic the behavior of a digital circuit described in RTL and verify it before implementing it.
 
 ### 🔹 Block Diagram 
 
 ![Simulation Block Diagram](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/simulation.png)
 
 ### a. Writing Verilog Code and Testbench
-
-- Use a text editor such as `gedit`:
+Use a text editor such as `gedit`:
 ```  
 gedit alu.v
 alu_tb.v
 ```
-
-- Write both your RTL modules and testbench files here.
+Write both your RTL modules and testbench files here.
 
 ### b. Compile the Code
-- compile both the codes using iverilog
+compile both the codes using iverilog
 ```
 iverilog alu.v alu_tb.v
 ```
@@ -79,8 +77,7 @@ or
 ```
 iverilog alu.v alu_tb.v -o alu_sim
 ```
-
-- This compiles the Verilog code into an executable simulation file `alu_sim`.
+This compiles the Verilog code into an executable simulation file `alu_sim`.
 
 ### c. Run the Simulation
 ```
@@ -90,8 +87,7 @@ or
 ```
 vvp alu_sim
 ```
-
-- Executes the simulation and typically generates a `.vcd` waveform dump if `$dumpfile` and `$dumpvars` are used in the testbench.
+Executes the simulation and typically generates a `.vcd` waveform dump if `$dumpfile` and `$dumpvars` are used in the testbench.
 
 ---
 
