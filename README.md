@@ -152,7 +152,6 @@ gedit alu.v
 alu_tb.v
 ```
 ![FIles Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/files.png)
-Write both your RTL modules and testbench files here.
 
 ### b. Compile the Code
 compile both the codes using iverilog
@@ -265,12 +264,13 @@ Set the top-level module
 ```
 hierarchy -top alu
 ```
+![FIles Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/abc.png)
 Run synthesis steps
 ```
 synth -top alu
 abc -liberty /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
-
+![FIles Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/abc.png)
 Write synthesized netlist
 ```
 write_verilog -noattr alu_netlist.v
@@ -279,12 +279,11 @@ Optionally view schematic
 ```
 show
 ```
-
+![yosys Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/netlist.png)
 Exit yosys
 ```
 exit
 ```
-![yosys Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/netlist.png)
 ---
 
 ## 8. Summary
