@@ -134,7 +134,7 @@ When GTKWave opens:
 - Zoom/Scroll → Use toolbar buttons or mouse to zoom in/out and navigate.
 
 
-![GTKWave Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/synthesis.png)
+![GTKWave Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/synthess.png)
 
 ---
 
@@ -154,7 +154,7 @@ When GTKWave opens:
 ---
 
 ## 7. Synthesizing Using Yosys
-[GTKWave Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/synthesis.png)
+![Synthesis Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/synthesis.png)
 ### Preparing for Synthesis
 
 - Clone the example repository containing `lib` files and Verilog sources:
