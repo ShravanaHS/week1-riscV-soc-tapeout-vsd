@@ -4,7 +4,7 @@
 
 | Day | Task Overview                                    | Details & Documents         |
 |-----|--------------------------------------------------|-----------------------------|
-| 1   | Overview of RTL Design, simulation and synthesis   | [DAY 1]()     |
+| 1   | Introduction to RTL Design, simulation and synthesis   | [DAY 1](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/DAY1/day1.md)     |
 | 2   | Basic Understanding of Liberty (.lib) file, Hierarchical & Flat Synthesis, Flop Coding | [Day 2]()     |
 
 
