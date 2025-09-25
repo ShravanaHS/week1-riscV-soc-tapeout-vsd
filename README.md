@@ -60,6 +60,91 @@ Simulation is the process of using software tools to mimic the behavior of a dig
 
 ![Simulation Block Diagram](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/simulation.png)
 
+### Verilog codes
+- RTL Code
+```
+module alu(a, b, opcode, result);
+    input [7:0] a, b;
+    input [3:0] opcode;
+    output reg [7:0] result;
+
+    always @(*) begin
+        case(opcode)
+            4'b0000: result = a + b;       // Addition
+            4'b0001: result = a - b;       // Subtraction
+            4'b0010: result = a & b;       // AND
+            4'b0011: result = a | b;       // OR
+            4'b0100: result = a ^ b;       // XOR
+            4'b0101: result = ~a;          // NOT a
+            4'b0110: result = a << 1;      // Left shift
+            4'b0111: result = a >> 1;      // Right shift
+            default: result = 8'b00000000; // Default
+        endcase
+    end
+endmodule
+```
+- Testbench Code
+```
+`timescale 1ns/1ps
+
+module alu_tb;
+    reg [7:0] a, b;
+    reg [3:0] opcode;
+    wire [7:0] result;
+
+    // Instantiate the ALU
+    alu dut (
+        .a(a),
+        .b(b),
+        .opcode(opcode),
+        .result(result)
+    );
+
+    // Generate VCD file for waveform
+    initial begin
+        $dumpfile("alu.vcd");
+        $dumpvars(0, alu_tb);
+    end
+
+    // Test sequence
+    initial begin
+        // Test Addition
+        a = 8'd10; b = 8'd5; opcode = 4'b0000;
+        #10;
+
+        // Test Subtraction
+        a = 8'd15; b = 8'd7; opcode = 4'b0001;
+        #10;
+
+        // Test AND
+        a = 8'b10101010; b = 8'b11001100; opcode = 4'b0010;
+        #10;
+
+        // Test OR
+        a = 8'b10101010; b = 8'b11001100; opcode = 4'b0011;
+        #10;
+
+        // Test XOR
+        a = 8'b10101010; b = 8'b11001100; opcode = 4'b0100;
+        #10;
+
+        // Test NOT
+        a = 8'b10101010; b = 8'b00000000; opcode = 4'b0101;
+        #10;
+
+        // Test Left Shift
+        a = 8'b00001111; b = 8'b00000000; opcode = 4'b0110;
+        #10;
+
+        // Test Right Shift
+        a = 8'b11110000; b = 8'b00000000; opcode = 4'b0111;
+        #10;
+
+        $finish; // End simulation
+    end
+endmodule
+```
+
 ### a. Writing Verilog Code and Testbench
 Use a text editor such as `gedit`:
 ```  
