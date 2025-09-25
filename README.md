@@ -166,7 +166,7 @@ cd sky130RTLDesignAndSynthesisWorkshop
 
 Read the standard cell library
 ```
-read_liberty /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty -lib /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 Read the RTL Verilog file
