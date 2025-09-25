@@ -49,7 +49,7 @@ Register-Transfer Level (RTL) design is a critical stage in digital hardware des
 
 ## 🔹 Block Diagram 
 
-![Simulation Block Diagram](./images/simulation_blk.png)
+![Simulation Block Diagram](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/rtl.png)
 
 ---
 
@@ -58,7 +58,7 @@ Register-Transfer Level (RTL) design is a critical stage in digital hardware des
 
 ### 🔹 Block Diagram 
 
-![Simulation Block Diagram](./images/simulation_blk.png)
+![Simulation Block Diagram](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/simulation.png)
 
 ### a. Writing Verilog Code and Testbench
 
@@ -134,7 +134,7 @@ When GTKWave opens:
 - Zoom/Scroll → Use toolbar buttons or mouse to zoom in/out and navigate.
 
 
-![GTKWave Output](./images/gtkwave_output.png)
+![GTKWave Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/synthesis.png)
 
 ---
 
@@ -154,10 +154,7 @@ When GTKWave opens:
 ---
 
 ## 7. Synthesizing Using Yosys
-
-*Insert Yosys Tool Logo Here*  
-![Yosys](./images/yosys.png)
-
+[GTKWave Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/synthesis.png)
 ### Preparing for Synthesis
 
 - Clone the example repository containing `lib` files and Verilog sources:
