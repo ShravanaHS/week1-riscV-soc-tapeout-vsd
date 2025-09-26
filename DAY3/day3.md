@@ -32,12 +32,6 @@ Digital logic optimization targets reducing the complexity, area, and power cons
 
 Constant propagation is a direct optimization method where fixed signals (constants 0 or 1) are propagated through the logic to simplify or eliminate unnecessary gates.
 
-**Example:**  
-If input signal `A` = 0 always, expressions involving `A` simplify drastically, potentially collapsing complex circuits to simple inverters or even direct wires.
-
-<div align="center">
-  ![Constant Propagation Example](./images/constant_propagation_example.png)
-</div>
 
 ### Boolean Logic Optimization
 
@@ -46,10 +40,6 @@ Methods such as Karnaugh Maps, Quine-McCluskey, and Boolean algebra simplify log
 **Example Boolean Expression Reduction:**  
 `assign y = a ? (b ? c : (c ? a : 0)) : (!c)`  
 can be reduced by Boolean algebra to a minimal form, reducing gates and delay.
-
-<div align="center">
-  ![Boolean Logic Optimization](./images/boolean_logic_optimization.png)
-</div>
 
 ---
 
@@ -81,8 +71,11 @@ endmodule
 Yosys synthesis will simplify the redundant OR-AND combination.
 
 <div align="center">
-  ![Lab 1 Output](./images/lab1_output.png)
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <br>
+  <b>optcheck1</b>
 </div>
+
 
 ---
 
@@ -96,9 +89,10 @@ endmodule
 
 **Explanation:**  
 Yosys reduces this to a simplified equivalence of `a | b`.
-
 <div align="center">
-  ![Lab 2 Output](./images/lab2_output.png)
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt2.png"/>
+  <br>
+  <b>optcheck2</b>
 </div>
 
 ---
@@ -114,9 +108,10 @@ endmodule
 Redundant term `(a & b & c)` can be simplified to `(a & b)` only.
 
 <div align="center">
-  ![Lab 3 Output](./images/lab3_output.png)
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt3.png"/>
+  <br>
+  <b>optcheck3</b>
 </div>
-
 ---
 
 ### Lab 4: opt_check4.v
@@ -131,9 +126,10 @@ endmodule
 Shows distributive property optimization.
 
 <div align="center">
-  ![Lab 4 Output](./images/lab4_output.png)
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt4.png"/>
+  <br>
+  <b>optcheck4</b>
 </div>
-
 ---
 
 ### Lab 5: multiple_module_opt.v
@@ -158,7 +154,9 @@ endmodule
 Modular design showcasing synthesis optimization and flattening.
 
 <div align="center">
-  ![Lab 5 Output](./images/lab5_output.png)
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt3.png"/>
+  <br>
+  <b>waveform</b>
 </div>
 
 ---
@@ -208,10 +206,19 @@ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 **Simulation Waveform Screenshot:**  
-![Insert simulation waveform image here for dff_const1]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/seq1wave.png"/>
+  <br>
+  <b>waveform</b>
+</div>
+
 
 **Synthesis Result Screenshot:**  
-![Insert synthesis output/netlist image here for dff_const1]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/seq1syn.png"/>
+  <br>
+  <b>Synthesis</b>
+</div>
 
 ---
 
@@ -237,10 +244,18 @@ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 **Simulation Waveform Screenshot:**  
-![Insert simulation waveform image here for dff_const2]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/seq2wave.png"/>
+  <br>
+  <b>waveform</b>
+</div>
 
 **Synthesis Result Screenshot:**  
-![Insert synthesis output/netlist image here for dff_const2]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/seq2syn.png"/>
+  <br>
+  <b>Synthesis</b>
+</div>
 
 ---
 
@@ -267,10 +282,18 @@ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 **Simulation Waveform Screenshot:**  
-![Insert simulation waveform image here for dff_const3]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/seq3wave.png"/>
+  <br>
+  <b>waveform</b>
+</div>
 
 **Synthesis Result Screenshot:**  
-![Insert synthesis output/netlist image here for dff_const3]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/seq3syn.png"/>
+  <br>
+  <b>synthesis</b>
+</div>
 
 ---
 
@@ -296,10 +319,18 @@ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 **Simulation Waveform Screenshot:**  
-![Insert simulation waveform image here for dff_const4]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/seq4wave.png"/>
+  <br>
+  <b>waveform</b>
+</div>
 
 **Synthesis Result Screenshot:**  
-![Insert synthesis output/netlist image here for dff_const4]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/ctr1syn.png"/>
+  <br>
+  <b>owaveform</b>
+</div>
 
 ---
 
@@ -325,10 +356,18 @@ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 **Simulation Waveform Screenshot:**  
-![Insert simulation waveform image here for dff_const5]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/sew5wave.png"/>
+  <br>
+  <b>waveform</b>
+</div>
 
 **Synthesis Result Screenshot:**  
-![Insert synthesis output/netlist image here for dff_const5]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/seq5syn.png"/>
+  <br>
+  <b>synthesis</b>
+</div>
 
 ---
 
@@ -345,10 +384,18 @@ Unused outputs in sequential circuits can cause unnecessary resource usage or sy
 (Commands similar to above)
 
 **Simulation Waveform Screenshot:**  
-![Insert simulation waveform image here for counter_opt]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/ctr1wave.png"/>
+  <br>
+  <b>owaveform</b>
+</div>
 
 **Synthesis Result Screenshot:**  
-![Insert synthesis output/netlist image here for counter_opt]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/ctr1syn.png"/>
+  <br>
+  <b>synthesis</b>
+</div>
 
 ---
 
@@ -361,10 +408,18 @@ Unused outputs in sequential circuits can cause unnecessary resource usage or sy
 (Commands similar to above)
 
 **Simulation Waveform Screenshot:**  
-![Insert simulation waveform image here for counter_opt2]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/ctr1syn.png"/>
+  <br>
+  <b>optcheck1</b>
+</div>
 
 **Synthesis Result Screenshot:**  
-![Insert synthesis output/netlist image here for counter_opt2]
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/ctr1syn.png"/>
+  <br>
+  <b>optcheck1</b>
+</div>
 
 ---
 ## 7. Summary
