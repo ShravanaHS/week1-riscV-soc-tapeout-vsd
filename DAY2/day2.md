@@ -60,16 +60,17 @@ You will often see the same gate with different suffixes, like `_1`, `_2`, `_4`.
 The synthesis tool automatically chooses the cell with the appropriate drive strength to meet the design's timing constraints while minimizing area and power.
 
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/lib1.png" width="500" />
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/lib1.png"/>
   <br>
   <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
 </div>
 
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/lib2.png" width="500" />
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/lib2.png"/>
   <br>
   <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
 </div>
+
 ---
 
 ## 2. Hierarchical vs. Flattened Synthesis
@@ -112,6 +113,7 @@ In this approach, the synthesis tool dissolves all module boundaries and merges 
   <br>
   <b>Flatten Synthesis of ALU</b>
 </div>
+
 ---
 
 ## 3. The Role of Flip-Flops in Digital Design
@@ -141,6 +143,18 @@ module dff_async_reset (
     end
 endmodule
 ```
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/asynsim.png" />
+  <br>
+  <b>Simulation</b>
+</div>
+<br>
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/asynsis.png" />
+  <br>
+  <b>Synthesis</b>
+</div>
+
 #### Synchronous Reset
 This reset is synchronized with the clock. The reset action only occurs on the next active clock edge after the reset signal is asserted.
 
@@ -159,34 +173,58 @@ module dff_sync_reset (
 endmodule
 ```
 <div align="center">
-  <img src="image.png" width="500" />
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/synsim.png" />
   <br>
-  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+  <b>Simulation</b>
 </div>
+<br>
 <div align="center">
-  <img src="image.png" width="500" />
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/synsis.png" />
   <br>
-  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+  <b></b>
 </div>
+<br>
 <div align="center">
-  <img src="image.png" width="500" />
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/synsys.png" />
   <br>
-  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+  <b>Synthesis</b>
 </div>
+
+#### Syncheronous Asynchronous Reset
+This type of reset combines the benefits of both synchronous and asynchronous resets, helping in timing control during reset assertion while avoiding clock-related delays during deassertion.
+
+```verilog
+module dff_async_sync_reset (
+    input  clk,          // clock
+    input  d,            // data input
+    input  async_reset,  // asynchronous reset (active high)
+    input  sync_reset,   // synchronous reset (active high)
+    output reg q         // output
+);
+
+    // Include async_reset in sensitivity list for immediate reset
+    always @(posedge clk or posedge async_reset) begin
+        if (async_reset)       // asynchronous reset
+            q <= 1'b0;
+        else if (sync_reset)   // synchronous reset (checked only on clock edge)
+            q <= 1'b0;
+        else
+            q <= d;            // normal operation
+    end
+
+endmodule
+
+```
 <div align="center">
-  <img src="image.png" width="500" />
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/synasynsim.png" />
   <br>
-  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+  <b>Simulation</b>
 </div>
+<br>
 <div align="center">
-  <img src="image.png" width="500" />
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/synasynsyn.png" />
   <br>
-  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
-</div>
-<div align="center">
-  <img src="image.png" width="500" />
-  <br>
-  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+  <b>Synthesis</b>
 </div>
 
 #### Simulation of Flip-Flops
@@ -213,11 +251,24 @@ module mult_by_2 (
 endmodule
 ```
 Synthesized Logic: The tool maps a[2:0] directly to y[3:1] and ties y[0] to 1'b0 (ground). This is extremely efficient.
+
 <div align="center">
-  <img src="image.png" width="500" />
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/mult2.png" />
   <br>
-  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+  <b>Simulation</b>
 </div>
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/mult2ss.png" />
+  <br>
+  <b></b>
+</div>
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/mylt2syn.png" />
+  <br>
+  <b>Synthesis</b>
+</div>
+
+
 
 Example 2: Multiplication by a Constant
 - Consider multiplying a 3-bit number a by 9.
@@ -238,9 +289,9 @@ endmodule
 ```
 Synthesized Logic: The tool creates the two terms (a << 3 and a) and adds them together using an adder cell from the standard cell library.
 <div align="center">
-  <img src="image.png" width="500" />
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/mult8syn.png" />
   <br>
-  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+  <b>Synthesis</b>
 </div>
 
 Writing synthesizable and efficient RTL is a key skill. Understanding how a tool might interpret your code allows you to guide it toward a better hardware implementation.
