@@ -164,12 +164,12 @@ endmodule
 Synthesized Logic: The tool maps a[2:0] directly to y[3:1] and ties y[0] to 1'b0 (ground). This is extremely efficient.
 
 Example 2: Multiplication by a Constant
-Consider multiplying a 3-bit number a by 9.
-assign y = a * 9;
-The synthesis tool can break this down using the distributive property:
-a * 9 = a * (8 + 1) = (a * 8) + (a * 1)
-a * 8 is a simple left shift by 3 bits.
-a * 1 is just a.
+- Consider multiplying a 3-bit number a by 9.
+- assign y = a * 9;
+- The synthesis tool can break this down using the distributive property:
+- a * 9 = a * (8 + 1) = (a * 8) + (a * 1)
+- a * 8 is a simple left shift by 3 bits.
+- a * 1 is just a.
 The hardware implementation becomes a shifter (wires) and an adder, which is much smaller and faster than a generic multiplier
 
 ```verilog
