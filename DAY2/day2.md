@@ -60,11 +60,16 @@ You will often see the same gate with different suffixes, like `_1`, `_2`, `_4`.
 The synthesis tool automatically chooses the cell with the appropriate drive strength to meet the design's timing constraints while minimizing area and power.
 
 <div align="center">
-  <img src="image.png" width="500" />
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/lib1.png" width="500" />
   <br>
   <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
 </div>
 
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/lib2.png" width="500" />
+  <br>
+  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+</div>
 ---
 
 ## 2. Hierarchical vs. Flattened Synthesis
@@ -97,15 +102,15 @@ In this approach, the synthesis tool dissolves all module boundaries and merges 
 
 <br>
 <div align="center">
-  <img src="image.png" width="500" />
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/alusubm.png" />
   <br>
-  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+  <b> Hierarchical Synthesis of ALU </b>
 </div>
 <br>
 <div align="center">
-  <img src="image.png" width="500" />
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/netlist.png"  />
   <br>
-  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+  <b>Flatten Synthesis of ALU</b>
 </div>
 ---
 
