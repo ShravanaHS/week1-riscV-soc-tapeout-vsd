@@ -59,6 +59,11 @@ You will often see the same gate with different suffixes, like `_1`, `_2`, `_4`.
 
 The synthesis tool automatically chooses the cell with the appropriate drive strength to meet the design's timing constraints while minimizing area and power.
 
+<div align="center">
+  <img src="image.png" width="500" />
+  <br>
+  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+</div>
 
 ---
 
@@ -91,7 +96,17 @@ In this approach, the synthesis tool dissolves all module boundaries and merges 
 | **Use Case** | Large multi-team projects, block-based design    | Smaller designs or when maximum optimization is critical |
 
 <br>
-
+<div align="center">
+  <img src="image.png" width="500" />
+  <br>
+  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+</div>
+<br>
+<div align="center">
+  <img src="image.png" width="500" />
+  <br>
+  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+</div>
 ---
 
 ## 3. The Role of Flip-Flops in Digital Design
@@ -138,6 +153,37 @@ module dff_sync_reset (
     end
 endmodule
 ```
+<div align="center">
+  <img src="image.png" width="500" />
+  <br>
+  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+</div>
+<div align="center">
+  <img src="image.png" width="500" />
+  <br>
+  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+</div>
+<div align="center">
+  <img src="image.png" width="500" />
+  <br>
+  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+</div>
+<div align="center">
+  <img src="image.png" width="500" />
+  <br>
+  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+</div>
+<div align="center">
+  <img src="image.png" width="500" />
+  <br>
+  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+</div>
+<div align="center">
+  <img src="image.png" width="500" />
+  <br>
+  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+</div>
+
 #### Simulation of Flip-Flops
 You can simulate these behaviors using a testbench and tools like Icarus Verilog (iverilog) for compilation and GTKWave (gtkwave) for waveform viewing to observe how the q output responds to the d, clk, and reset signals.
 
@@ -162,6 +208,11 @@ module mult_by_2 (
 endmodule
 ```
 Synthesized Logic: The tool maps a[2:0] directly to y[3:1] and ties y[0] to 1'b0 (ground). This is extremely efficient.
+<div align="center">
+  <img src="image.png" width="500" />
+  <br>
+  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+</div>
 
 Example 2: Multiplication by a Constant
 - Consider multiplying a 3-bit number a by 9.
@@ -181,5 +232,10 @@ module mult_by_9 (
 endmodule
 ```
 Synthesized Logic: The tool creates the two terms (a << 3 and a) and adds them together using an adder cell from the standard cell library.
+<div align="center">
+  <img src="image.png" width="500" />
+  <br>
+  <b>sky130_fd_sc_hd__tt_025C_1v80.lib</b>
+</div>
 
 Writing synthesizable and efficient RTL is a key skill. Understanding how a tool might interpret your code allows you to guide it toward a better hardware implementation.
