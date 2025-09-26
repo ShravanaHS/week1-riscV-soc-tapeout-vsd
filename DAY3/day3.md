@@ -4,38 +4,15 @@
 Welcome to Day 3 of this workshop! Today we discuss optimization of combinational and sequential circuits, introducing techniques to enhance efficiency and performance.
 
 ---
-
 # Table of Contents
 
 - [Introduction to Logic Optimization](#1-introduction-to-logic-optimization)
 - [Combinational Logic Optimization](#2-combinational-logic-optimization)
-  - [Why Optimize?](#why-optimize)
-  - [Constant Propagation](#constant-propagation)
-  - [Boolean Logic Optimization](#boolean-logic-optimization)
 - [Sequential Logic Optimization](#3-sequential-logic-optimization)
-  - [Why Optimize Sequential Logic?](#why-optimize-sequential-logic)
-  - [Basic Sequential Constant Propagation](#basic-sequential-constant-propagation)
-  - [Advanced Sequential Optimization Techniques](#advanced-sequential-optimization-techniques)
-    - [State Optimization](#state-optimization)
-    - [Cloning](#cloning)
-    - [Retiming](#retiming)
 - [Labs on Combinational Optimization](#4-labs-on-combinational-optimization)
-  - [Lab 1: opt_check1.v](#lab-1-opt_check1v)
-  - [Lab 2: opt_check2.v](#lab-2-opt_check2v)
-  - [Lab 3: opt_check3.v](#lab-3-opt_check3v)
-  - [Lab 4: opt_check4.v](#lab-4-opt_check4v)
-  - [Lab 5: multiple_module_opt.v](#lab-5-multiple_module_optv)
 - [Labs on Sequential Optimization](#5-labs-on-sequential-optimization)
-  - [Lab 1: dff_const1.v](#lab-1-dff_const1v)
-  - [Lab 2: dff_const2.v](#lab-2-dff_const2v)
-  - [Lab 3: dff_const3.v](#lab-3-dff_const3v)
-  - [Lab 4: dff_const4.v](#lab-4-dff_const4v)
-  - [Lab 5: dff_const5.v](#lab-5-dff_const5v)
-  - [Lab 6: counter_opt.v](#lab-6-counter_optv-unused-outputs)
-  - [Lab 7: counter_opt2.v](#lab-7-counter_opt2v-unused-outputs)
 - [Summary](#6-summary)
-  
----
+
 
 ## 1. Introduction to Logic Optimization
 
