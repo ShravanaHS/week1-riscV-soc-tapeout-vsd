@@ -66,7 +66,7 @@ Simulation is the process of using software tools to mimic the behavior of a dig
 
 ### Verilog codes
 - RTL Code
-```
+```verilog
 module alu(a, b, opcode, result);
     input [7:0] a, b;
     input [3:0] opcode;
@@ -88,7 +88,7 @@ module alu(a, b, opcode, result);
 endmodule
 ```
 - Testbench Code
-```
+```verilog
 `timescale 1ns/1ps
 
 module alu_tb;
@@ -159,11 +159,11 @@ alu_tb.v
 
 ### b. Compile the Code
 compile both the codes using iverilog
-```
+```bash
 iverilog alu.v alu_tb.v
 ```
 or
-```
+```bash
 iverilog alu.v alu_tb.v -o alu_sim
 ```
 
@@ -172,11 +172,11 @@ iverilog alu.v alu_tb.v -o alu_sim
 This compiles the Verilog code into an executable simulation file `alu_sim`.
 
 ### c. Run the Simulation
-```
+```bash
 ./a.out
 ```
 or
-```
+```bash
 vvp alu_sim
 ```
 Executes the simulation and typically generates a `.vcd` waveform dump if `$dumpfile` and `$dumpvars` are used in the testbench.
@@ -201,14 +201,14 @@ initial begin
 end
 ```
 After running the simulation with:
-```
+```bash
 vvp alu
 ```
 a file `alu.vcd` will be created in your working directory.
 
 ## 🔹 Step 2: Open GTKWave
 To view the waveform:
-```
+```bash
 gtkwave alu.vcd
 ```
 👉 If you used a custom name, replace alu.vcd with that filename.
@@ -246,7 +246,7 @@ When GTKWave opens:
 ### Preparing for Synthesis
 
 - Clone the example repository containing `lib` files and Verilog sources:
-```
+```bash
 
 git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop
 cd sky130RTLDesignAndSynthesisWorkshop
@@ -257,36 +257,36 @@ cd sky130RTLDesignAndSynthesisWorkshop
 ### Running Yosys Synthesis Commands
 
 Read the standard cell library
-```
+```bash
 read_liberty -lib /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 Read the RTL Verilog file
-```
+```bash
 read_verilog alu.v
 ```
 Set the top-level module
-```
+```bash
 hierarchy -top alu
 ```
 ![FIles Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/abc.png)
 Run synthesis steps
-```
+```bash
 synth -top alu
 abc -liberty /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 ![FIles Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/abc.png)
 Write synthesized netlist
-```
+```bash
 write_verilog -noattr alu_netlist.v
 ```
 Optionally view schematic
-```
+```bash
 show
 ```
 ![yosys Output](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/netlist.png)
 Exit yosys
-```
+```bash
 exit
 ```
 ---
