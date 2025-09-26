@@ -6,7 +6,7 @@
 |-----|--------------------------------------------------|-----------------------------|
 | 1   | Introduction to RTL Design, simulation and synthesis   | [DAY 1](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/DAY1/day1.md)     |
 | 2   | Basic Understanding of Liberty (.lib) file, Hierarchical & Flat Synthesis, Flop Coding | [DAY 2](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/DAY2/day2.md)     |
-| 3   | -----------------------------| [DAY 3](day3.md) |
+| 3   | Combinational and Sequential Optimization | [DAY 3](https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/DAY3/day3.md) |
 
 
 ---
