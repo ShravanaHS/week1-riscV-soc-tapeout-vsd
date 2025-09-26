@@ -70,13 +70,12 @@ Similar to combinational optimization but applied over sequential circuits, cons
 ## 4. Labs on Optimization
 
 ### Lab 1: opt_check1.v
-
+```verilog
 // Simple redundant OR gate optimization
 module opt_check1 (input a, input b, output y);
 assign y = a | (a & b);
 endmodule
-
-text
+```
 
 **Explanation:**  
 Yosys synthesis will simplify the redundant OR-AND combination.
@@ -88,13 +87,12 @@ Yosys synthesis will simplify the redundant OR-AND combination.
 ---
 
 ### Lab 2: opt_check2.v
-
+```verilog
 // Redundant NOT logic optimization
 module opt_check2 (input a, input b, output y);
 assign y = ~(~a & ~b);
 endmodule
-
-text
+```
 
 **Explanation:**  
 Yosys reduces this to a simplified equivalence of `a | b`.
@@ -106,14 +104,12 @@ Yosys reduces this to a simplified equivalence of `a | b`.
 ---
 
 ### Lab 3: opt_check3.v
-
+```verilog
 // Repeated signals for optimization
 module opt_check3 (input a, input b, input c, output y);
 assign y = (a & b) | (a & b & c);
 endmodule
-
-text
-
+```
 **Explanation:**  
 Redundant term `(a & b & c)` can be simplified to `(a & b)` only.
 
@@ -124,13 +120,12 @@ Redundant term `(a & b & c)` can be simplified to `(a & b)` only.
 ---
 
 ### Lab 4: opt_check4.v
-
+```verilog
 // Optimization using distributive law
 module opt_check4 (input a, input b, input c, output y);
 assign y = (a & b) | (a & c);
 endmodule
-
-text
+```
 
 **Explanation:**  
 Shows distributive property optimization.
@@ -142,7 +137,7 @@ Shows distributive property optimization.
 ---
 
 ### Lab 5: multiple_module_opt.v
-
+```
 module sub_module1 (input a, input b, output y);
 assign y = a & b;
 endmodule
@@ -157,8 +152,7 @@ sub_module1 u1 (.a(a), .b(b), .y(n1));
 sub_module2 u2 (.x(n1), .z(c), .w(n2));
 assign y = n2 & b;
 endmodule
-
-text
+```
 
 **Explanation:**  
 Modular design showcasing synthesis optimization and flattening.
@@ -198,22 +192,20 @@ Sequential logic circuits differ from combinational circuits by incorporating me
 A D flip-flop with asynchronous reset that sets the output to 0, otherwise loads constant 1 on clock edge.
 
 **Simulation Commands:**
-
+```
 iverilog -o dff_const1_out dff_const1.v tb_dff_const1.v
 vvp dff_const1_out
 gtkwave tb_dff_const1.vcd
-
-text
+```
 
 **Synthesis Commands:**
-
+```
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog dff_const1.v
 synth -top dff_const1
 dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-
-text
+```
 
 **Simulation Waveform Screenshot:**  
 ![Insert simulation waveform image here for dff_const1]
@@ -229,22 +221,20 @@ text
 A D flip-flop that always sets output to 1 regardless of reset.
 
 **Simulation Commands:**
-
+```
 iverilog -o dff_const2_out dff_const2.v tb_dff_const2.v
 vvp dff_const2_out
 gtkwave tb_dff_const2.vcd
-
-text
+```
 
 **Synthesis Commands:**
-
+```
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog dff_const2.v
 synth -top dff_const2
 dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-
-text
+```
 
 **Simulation Waveform Screenshot:**  
 ![Insert simulation waveform image here for dff_const2]
@@ -260,21 +250,21 @@ text
 [Add short description for dff_const3]
 
 **Simulation Commands:**
-
+```
 iverilog -o dff_const3_out dff_const3.v tb_dff_const3.v
 vvp dff_const3_out
 gtkwave tb_dff_const3.vcd
-
-text
+```
 
 **Synthesis Commands:**  
+```
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog dff_const3.v
 synth -top dff_const3
 dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 
-text
+```
 
 **Simulation Waveform Screenshot:**  
 ![Insert simulation waveform image here for dff_const3]
@@ -290,21 +280,20 @@ text
 [Add short description for dff_const4]
 
 **Simulation Commands:**
-
+```
 iverilog -o dff_const4_out dff_const4.v tb_dff_const4.v
 vvp dff_const4_out
 gtkwave tb_dff_const4.vcd
-
-text
+```
 
 **Synthesis Commands:**  
+```
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog dff_const4.v
 synth -top dff_const4
 dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-
-text
+```
 
 **Simulation Waveform Screenshot:**  
 ![Insert simulation waveform image here for dff_const4]
@@ -320,21 +309,20 @@ text
 [Add short description for dff_const5]
 
 **Simulation Commands:**
-
+```
 iverilog -o dff_const5_out dff_const5.v tb_dff_const5.v
 vvp dff_const5_out
 gtkwave tb_dff_const5.vcd
-
-text
+```
 
 **Synthesis Commands:**  
+```
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog dff_const5.v
 synth -top dff_const5
 dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-
-text
+```
 
 **Simulation Waveform Screenshot:**  
 ![Insert simulation waveform image here for dff_const5]
