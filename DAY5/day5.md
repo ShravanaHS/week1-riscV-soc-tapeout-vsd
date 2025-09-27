@@ -31,7 +31,7 @@ Here, if `a` and `b` are both true, `y` is assigned `1` because `if (a)` comes f
 An **incomplete if statement** (no `else`) causes the tool to infer a latch; the output variable holds its previous value if no assignment occurs.
 
 **Example:**
-```
+```verilog
 always @(*) begin
 if (en)
 q = d;
@@ -45,7 +45,7 @@ end
 ### Counter Example: Control with Enable and Reset
 
 A common sequential design:
-```
+```verilog
 always @(posedge clk)
 if (rst)
 out <= 0;
@@ -65,7 +65,8 @@ No else: out holds previous value (like a latch)
 - **Case statement** acts like a large multiplexer.
 
 **Example:**
-```
+
+```verilog
 always @(*) begin
 case(sel)
 2'b00: y = d0;
@@ -73,6 +74,7 @@ case(sel)
 // Missing default path: y not assigned!
 endcase
 end
+
 ```
 Add a `default` to prevent latches.
 
@@ -84,7 +86,8 @@ If outputs are only assigned for some cases, latches form for unassigned outputs
 **Best practice:** Assign every output in every case or initialize at block start.
 
 **Example:**
-```
+
+```verilog
 always @(*) begin
 y = 0; // Initialization avoids latch!
 case(sel)
@@ -110,7 +113,8 @@ end
 - Always use full assignment or a default in a case block.
 
 **Example:**
-```
+
+```verilog
 always @(*) begin
 case(sel)
 2'b00: y = i0;
@@ -119,7 +123,6 @@ case(sel)
 endcase
 end
 ```
-
 **Solution:** Add `default: y = 1'b0;` or assign y before case statement.
 
 ---
@@ -137,7 +140,9 @@ A **for loop** in Verilog is used to streamline repetitive logic, reducing manua
 - Most common usage: implementing bus-wide or multi-bit logic with minimal code.
 
 **Example: Evaluating Expressions**
-```
+
+```verilog
+
 always @(*) begin
 for (i = 0; i < 4; i = i + 1)
 y[i] = a[i] & b[i];
@@ -154,7 +159,9 @@ This loop builds combinational logic for each bit position.
 - **Initialization loops:** Initialize arrays or registers in testbenches (not synthesizable in hardware unless used in always/generate blocks).
 
 **Example:**
-```
+
+```verilog
+
 integer i;
 always @(*) begin
 for (i = 0; i < 8; i = i + 1)
@@ -174,7 +181,8 @@ A **generate for loop** is used in the top-level module or within a `generate` b
 - Expand into actual Verilog code before synthesis—each iteration generates hardware.
 
 **Example:**
-```
+
+```verilog
 genvar i;
 generate
 for (i = 0; i < 4; i = i + 1) begin : gen_loop
@@ -190,7 +198,8 @@ endgenerate
 - Ensure correct order of evaluation inside loops when intermediate results are used.
 
 **Example:**
-```
+
+```verilog
 always @(*) begin
 for (i = 0; i < 4; i = i + 1)
 y[i] = x[i] & c; // x[i] must be updated before being used elsewhere
@@ -206,7 +215,8 @@ If assignment order matters, careful loop and blocking usage avoids unintended l
 - **Initialization in always blocks:** Good practice to zero outputs before setting them inside loops; prevents inferred latches.
 
 **MUX Example:**
-```
+
+```verilog
 always @(*) begin
 y = 1'b0; // Safe default
 for (i = 0; i < 4; i = i + 1) begin
@@ -217,7 +227,8 @@ end
 ```
 
 **DEMUX Example:**
-```
+
+```verilog
 always @(*) begin
 y_int = 8'b0;
 for (i = 0; i < 8; i = i + 1) begin
@@ -236,7 +247,8 @@ An **RCA** is a classic n-bit adder implemented by chaining single-bit full adde
 - **generate for loop:** Instantiates each full adder dynamically for the required bit width.
 
 **Example (theory):**
-```
+
+```verilog
 genvar i;
 generate
 for (i = 0; i < N; i = i + 1) begin : rca
@@ -247,6 +259,7 @@ endgenerate
 Where `fa` is a full adder module.
 
 ---
+
 ### 7. LAB Exercises
 
 #### Lab 1: incomp_if.v
@@ -254,7 +267,8 @@ Where `fa` is a full adder module.
 This lab investigates the effect of incomplete if statements on synthesis and simulation in Verilog, highlighting latch inference.
 
 **Verilog Code:**
-```
+
+```verilog
 module incomp_if (input i0, input i1, input i2, output reg y);
 always @(*) begin
 if (i0)
@@ -299,7 +313,8 @@ quit
 Demonstrates nesting and absence of else branches causing multiple latches.
 
 **Verilog Code:**
-```
+
+```verilog
 module incomp_if2 (input i0, input i1, input i2, input i3, output reg y);
 always @(*) begin
 if (i0)
@@ -312,6 +327,7 @@ endmodule
 ```
 
 **Simulation (RTL):**
+
 ```
 iverilog -o incomp_if2_sim incomp_if2.v tb_incomp_if2.v
 vvp incomp_if2_sim
@@ -348,7 +364,8 @@ quit
 Shows latch inference due to missing default in case block.
 
 **Verilog Code:**
-```
+
+```verilog
 module incomp_case (input i0, input i1, input i2, input [1:0] sel, output reg y);
 always @(*) begin
 case (sel)
@@ -392,7 +409,8 @@ quit
 Explores incomplete case handling with wildcards, showing risks in real hardware design.
 
 **Verilog Code:**
-   ```
+
+```verilog
 module bad_case (
 input i0, input i1, input i2, input i3,
 input [1:0] sel,
@@ -444,7 +462,7 @@ quit
 Demonstrates correct case statement coding with full assignment (no latches inferred).
 
 **Verilog Code:**
-```
+```verilog
 module comp_case (input i0, input i1, input i2, input [1:0] sel, output reg y);
 always @(*) begin
 case(sel)
@@ -488,24 +506,6 @@ quit
 
 This module demonstrates using a for loop inside an always block to implement a 4-to-1 multiplexer.
 
-**Verilog Code:**
-```
-module mux_generate (
-input i0, input i1, input i2, input
-i3, input [1
-0] sel,
-ut
-ut reg y ); wire
-3:0] i_int; assign i_int = {i3,
-2, i1, i0}
-integer k; alway
-@(*) begin for (k = 0; k < 4;
-= k + 1) beg
-n if
-k =
-se
-```
-
 **Simulation (RTL):**
 ```
 iverilog -o mux_generate_sim mux_generate.v tb_mux_generate.v
@@ -537,30 +537,6 @@ write_verilog -noattr mux_generate_net.v
 
 An 8-to-1 demultiplexer implemented with a case statement.
 
-**Verilog Code:**
-```
-module demux_case (
-output o0, output o1, output o2, output
-o3, output o4, output o5, output o6, ou
-put o7, inpu
-[2:0]
-el
-input i );
-eg [7:0] y_int; assign {o7, o6, o5, o4, o3, o2,
-1, o0} = y_int; a
-ways @(*) beg
-n y_i
-t = 8'b0; case(
-el) 3'b000 : y
-int = i; 3'b00
-: y_int = i;[6]
-3'b010 : y_int = i;[
-] 3'b011 : y_in
-= i;[8] 3'b100
-: y_int = i;[9]
-3'b101
-y_
-```
 **Simulation (RTL):**
 ```
 iverilog -o demux_case_sim demux_case.v tb_demux_case.v
@@ -594,26 +570,6 @@ write_verilog -noattr demux_case_net.v
 
 Implements an 8-to-1 demultiplexer with a for loop in an always block, showcasing hardware generation by looping.
 
-**Verilog Code:**
-```
-module demux_generate (
-output o0, output o1, output o2, output
-o3, output o4, output o5, output o6, ou
-put o7, inpu
-[2:0]
-el
-input i );
-eg [7:0] y_int; assign {o7, o6, o5, o4, o3, o2,
-1, o0} = y
-int; integer k; a
-ways @(*) beg
-n y_int = 8'b0; for (k = 0;
-k < 8; k = k
-1) begin
-
-if
-```
-
 **Simulation (RTL):**
 ```
 iverilog -o demux_generate_sim demux_generate.v tb_demux_generate.v
@@ -646,30 +602,6 @@ write_verilog -noattr demux_generate_net.v
 
 Demonstrates an 8-bit Ripple Carry Adder (RCA) constructed using a generate for loop and full adder modules.
 
-**Ripple Carry Adder (rca.v):**
-```
-module rca (
-input [7:0] n
-m1, input [7:
-] num2, outp
-t
-8:0] sum ); wire [7
-genvar i;
-generate
-for (i = 1; i < 8; i = i + 1) b
-gin fa u_fa_1 (.a(num1[i]), .b(num2[i]), .c(int_co[i-1]), .co(int_co[i]), .sum(i
-t_s
-fa u_fa_0 (.a(num1), .b(num2), .c(1'b0), .co(int_co), .sum(int_sum));
-
-assign sum[7:0] = int_sum;
-assign sum = int_co;
-```
-
-**Full Adder (fa.v):**
-```
-module fa (input a, input b, input c, output co, output sum);
-assign {co, sum} = a + b
-```
 
 **Simulation (RTL):**
 ```
@@ -706,13 +638,6 @@ write_verilog -noattr rca_net.v
 - **Generate blocks** make hierarchical, parameterized, modular designs possible—especially useful for multipliers, adders, and scalable bus systems.
 - Always pre-initialize outputs within always blocks to prevent latches when using loops.
 - Blocking assignment within loops must be ordered to match hardware dependencies.
-
----
-
-*No hardware will execute loops sequentially; all logic resulting from loops is mapped concurrently in the synthesized design. Always confirm loop unrolling and logic connectivity in your synthesis output!*
-
-## Theory Summary and Coding Guidelines
-
 - **Always assign every output in all paths** in combinational blocks to prevent latches.
 - Prefer complete `if-else` and populated `case` statements, including defaults.
 - Avoid partial assignments and rely on initialization if possible.
