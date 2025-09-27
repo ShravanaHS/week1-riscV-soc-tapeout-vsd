@@ -450,7 +450,7 @@ write_verilog -noattr bad_case_net.v
 quit
 ```
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/badcasesyn.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/bascasesyn.png"/>
   <br>
   <b>Synthesis result for bad case handling</b>
 </div>
