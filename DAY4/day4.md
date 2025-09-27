@@ -1,10 +1,17 @@
 # Day 4: Gate-Level Simulation (GLS), Blocking vs Non-Blocking in Verilog, and Synthesis-Simulation Mismatch
 
-This session covers three fundamental topics crucial for digital design verification and synthesis quality:
+## Table of Contents
 
-- Gate-Level Simulation (GLS)
-- Blocking vs Non-Blocking Assignments in Verilog
-- Synthesis-Simulation Mismatch
+- [1. Gate-Level Simulation (GLS)](#1-gate-level-simulation-gls)
+- [2. Synthesis-Simulation Mismatch](#2-synthesis-simulation-mismatch)
+- [3. Blocking vs Non-Blocking Assignments in Verilog](#3-blocking-vs-non-blocking-assignments-in-verilog)
+
+- [Lab 1: Ternary Operator MUX](#lab-1-ternary-operator-mux)
+- [Lab 2: Bad MUX Example](#lab-2-bad-mux-example)
+- [Lab 3: Blocking Assignment Caveat](#lab-3-blocking-assignment-caveat)
+
+- [5. Summary](#5-summary)
+
 
 ---
 
