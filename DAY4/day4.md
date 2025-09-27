@@ -91,7 +91,7 @@ always @(posedge clk) q <= d;
 ---
 
 **Pitfall:**
-```
+```verilog
 always @(*) begin
 y = x & c;
 x = a | b;
@@ -112,7 +112,7 @@ In the above, `y` uses the *old* value of `x` because assignment to `x` happens 
 A 2:1 Multiplexer implemented with a ternary operator is simple and synthesizable. No mismatch occurs if coded clearly.
 
 **Verilog Code:**
-```
+```verilog
 module ternary_operator_mux (input i0, input i1, input sel, output y);
 assign y = sel ? i1 : i0;
 endmodule
@@ -171,7 +171,7 @@ gtkwave tb_ternary_operator_mux.vcd
 Mux coded with wrong sensitivity list (`always @(sel)`) and non-blocking assignments in combinational logic (`<=`) creates simulation-synthesis mismatch. Synthesis tool may infer latches or ignore intended logic, producing incorrect netlist.
 
 **Verilog (problematic):**
-```
+```verilog
 module bad_mux (input i0, input i1, input sel, output reg y);
 always @ (sel) begin
 if (sel)
@@ -188,7 +188,7 @@ endmodule
 - Possible latch inference or incorrect netlist.
 
 **Corrected Version:**
-```
+```verilog
 always @ (*) begin
 if (sel)
 y = i1;
@@ -242,7 +242,7 @@ gtkwave tb_bad_mux.vcd
 Assignment order in always blocks matters. Blocking assignments update variables in code order; using a variable before it's assigned can cause mismatches and race conditions.
 
 **Example (problematic):**
-```
+```verilog
 module blocking_caveat (input a, input b, input c, output reg d);
 reg x;
 always @ (*) begin
@@ -253,7 +253,7 @@ endmodule
 ```
 
 **Corrected Version:**
-```
+```verilog
 always @ (*) begin
 x = a | b;
 d = x & c; // now uses updated x
