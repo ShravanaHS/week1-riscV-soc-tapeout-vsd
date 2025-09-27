@@ -12,7 +12,7 @@
 - If multiple conditions are true, the **first matching statement executes** and others are skipped.
 
 **Example:**
-```
+```verilog
 always @(*) begin
 if (a)
 y = 1;
@@ -247,6 +247,8 @@ endgenerate
 Where `fa` is a full adder module.
 
 ---
+### 7. LAB Exercises
+
 #### Lab 1: incomp_if.v
 
 This lab investigates the effect of incomplete if statements on synthesis and simulation in Verilog, highlighting latch inference.
@@ -270,7 +272,7 @@ gtkwave tb_incomp_if.vcd
 ```
 
 <div align="center">
-  <!-- Paste your waveform screenshot here -->
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/incompif.png"/>
   <br>
   <b>RTL waveform for incomplete if</b>
 </div>
@@ -285,27 +287,9 @@ write_verilog -noattr incomp_if_net.v
 quit
 ```
 <div align="center">
-  <!-- Paste your synthesized netlist screenshot here -->
+ <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/incompifsyn.png"/>
   <br>
   <b>Synthesis result for incomplete if (shows latch)</b>
-</div>
-
-
-**GLS:**
-```
-iverilog -o incomp_if_sim_gls
-../my_lib/verilog_model/primitives.v
-../my_lib/verilog_model/sky130_fd_sc_hd.v
-incomp_if_net.v
-tb_incomp_if.v
-vvp incomp_if_sim_gls
-gtkwave tb_incomp_if.vcd
-```
-
-<div align="center">
-  <!-- Paste GLS waveform screenshot here -->
-  <br>
-  <b>GLS waveform for incomplete if</b>
 </div>
 
 ---
@@ -335,7 +319,7 @@ gtkwave tb_incomp_if2.vcd
 ```
 
 <div align="center">
-  <!-- Paste waveform screenshot here -->
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/incompif2wave.png"/>
   <br>
   <b>RTL waveform for incomplete nested if</b>
 </div>
@@ -351,29 +335,13 @@ quit
 ```
 
 <div align="center">
-  <!-- Synthesis output screenshot -->
+<img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/incompif2syn.png"/>
   <br>
   <b>Synthesis result for incomplete nested if</b>
 </div>
 
-**GLS:**
-```
-iverilog -o incomp_if2_sim_gls
-../my_lib/verilog_model/primitives.v
-../my_lib/verilog_model/sky130_fd_sc_hd.v
-incomp_if2_net.v
-tb_incomp_if2.v
-vvp incomp_if2_sim_gls
-gtkwave tb_incomp_if2.vcd
-```
-<div align="center">
-  <!-- GLS waveform screenshot -->
-  <br>
-  <b>GLS waveform for incomplete nested if</b>
-</div>
 
 ---
-## 7. Lab Exercises
 
 #### Lab 3: incomp_case.v
 
@@ -399,7 +367,7 @@ gtkwave tb_incomp_case.vcd
 ```
 
 <div align="center">
-  <!-- Waveform screenshot -->
+ <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/compcasewave.png"/>
   <br>
   <b>RTL waveform for incomplete case</b>
 </div>
@@ -414,28 +382,10 @@ write_verilog -noattr incomp_case_net.v
 quit
 ```
 <div align="center">
-  <!-- Synthesis screenshot -->
+<img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/compcasesyn.png"/>
   <br>
   <b>Synthesis result for incomplete case</b>
 </div>
-
-**GLS:**
-```
-iverilog -o incomp_case_sim_gls
-../my_lib/verilog_model/primitives.v
-../my_lib/verilog_model/sky130_fd_sc_hd.v
-incomp_case_net.v
-tb_incomp_case.v
-vvp incomp_case_sim_gls
-gtkwave tb_incomp_case.vcd
-```
-<div align="center">
-  <!-- GLS waveform screenshot -->
-  <br>
-  <b>GLS waveform for incomplete case</b>
-</div>
-
----
 
 #### Lab 4: partial_case_assign.v
 
@@ -471,7 +421,7 @@ vvp partial_case_assign_sim
 gtkwave tb_partial_case_assign.vcd
 ```
 <div align="center">
-  <!-- Waveform screenshot -->
+   <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/incompcasewave.png"/>
   <br>
   <b>RTL waveform for partial case assignment</b>
 </div>
@@ -486,25 +436,9 @@ write_verilog -noattr partial_case_assign_net.v
 quit
 ```
 <div align="center">
-  <!-- Synthesis screenshot -->
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/incompcasesyn.png"/>
   <br>
   <b>Synthesis result for partial case assignment</b>
-</div>
-
-**GLS:**
-```
-iverilog -o partial_case_assign_sim_gls
-../my_lib/verilog_model/primitives.v
-../my_lib/verilog_model/sky130_fd_sc_hd.v
-partial_case_assign_net.v
-tb_partial_case_assign.v
-vvp partial_case_assign_sim_gls
-gtkwave tb_partial_case_assign.vcd
-```
-<div align="center">
-  <!-- GLS waveform screenshot -->
-  <br>
-  <b>GLS waveform for partial case assignment</b>
 </div>
 
 ---
@@ -539,7 +473,7 @@ gtkwave tb_bad_case.vcd
 ```
 
 <div align="center">
-  <!-- Waveform screenshot -->
+   <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/badcasewave.png"/>
   <br>
   <b>RTL waveform for bad case handling</b>
 </div>
@@ -554,26 +488,9 @@ write_verilog -noattr bad_case_net.v
 quit
 ```
 <div align="center">
-  <!-- Synthesis screenshot -->
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/badcasesyn.png"/>
   <br>
   <b>Synthesis result for bad case handling</b>
-</div>
-
-**GLS:**
-```
-iverilog -o bad_case_sim_gls
-../my_lib/verilog_model/primitives.v
-../my_lib/verilog_model/sky130_fd_sc_hd.v
-bad_case_net.v
-tb_bad_case.v
-vvp bad_case_sim_gls
-gtkwave tb_bad_case.vcd
-```
-
-<div align="center">
-  <!-- GLS waveform screenshot -->
-  <br>
-  <b>GLS waveform for bad case handling</b>
 </div>
 
 ---
@@ -603,7 +520,7 @@ gtkwave tb_comp_case.vcd
 ```
 
 <div align="center">
-  <!-- Waveform screenshot -->
+   <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/compcasewave.png"/>
   <br>
   <b>RTL waveform for complete case</b>
 </div>
@@ -618,27 +535,12 @@ write_verilog -noattr comp_case_net.v
 quit
 ```
 <div align="center">
-  <!-- Synthesis screenshot -->
+   <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/compcasesyn.png"/>
   <br>
   <b>Synthesis result for complete case</b>
 </div>
 
-**GLS:**
-```
-iverilog -o comp_case_sim_gls
-../my_lib/verilog_model/primitives.v
-../my_lib/verilog_model/sky130_fd_sc_hd.v
-comp_case_net.v
-tb_comp_case.v
-vvp comp_case_sim_gls
-gtkwave tb_comp_case.vcd
-```
-
-<div align="center">
-  <!-- GLS waveform screenshot -->
-  <br>
-  <b>GLS waveform for complete case</b>
-</div>
+---
 ### 8. Practical Considerations and Caveats
 
 - **For loops** help scale, but always check that loop bounds are fixed and do not depend on run-time variables.
