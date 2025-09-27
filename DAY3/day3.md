@@ -166,7 +166,7 @@ endmodule
 Modular design showcasing synthesis optimization and flattening.
 
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt3.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/multimodelopt.png"/>
   <br>
   <b>waveform</b>
 </div>
@@ -339,7 +339,7 @@ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 
 **Synthesis Result Screenshot:**  
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/ctr1syn.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/multimodopt2.png"/>
   <br>
   <b>owaveform</b>
 </div>
@@ -421,16 +421,16 @@ Unused outputs in sequential circuits can cause unnecessary resource usage or sy
 
 **Simulation Waveform Screenshot:**  
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/ctr1syn.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/counteropt2.png"/>
   <br>
-  <b>optcheck1</b>
+  <b>counter opt 2</b>
 </div>
 
 **Synthesis Result Screenshot:**  
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/ctr1syn.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/counterpot2.png"/>
   <br>
-  <b>optcheck1</b>
+  <b>counter opt 2</b>
 </div>
 
 ---
