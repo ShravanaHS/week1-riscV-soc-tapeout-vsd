@@ -6,12 +6,24 @@ Welcome to Day 3 of this workshop! Today we discuss optimization of combinationa
 ---
 # Table of Contents
 
-- [Introduction to Logic Optimization](#1-introduction-to-logic-optimization)
-- [Combinational Logic Optimization](#2-combinational-logic-optimization)
-- [Sequential Logic Optimization](#3-sequential-logic-optimization)
-- [Labs on Combinational Optimization](#4-labs-on-combinational-optimization)
-- [Labs on Sequential Optimization](#5-labs-on-sequential-optimization)
-- [Summary](#6-summary)
+- [1. Introduction to Logic Optimization](#1-introduction-to-logic-optimization)
+- [2. Combinational Logic Optimization](#2-combinational-logic-optimization)
+  - [Lab 1: opt_check1.v](#lab-1-opt_check1v)
+  - [Lab 2: opt_check2.v](#lab-2-opt_check2v)
+  - [Lab 3: opt_check3.v](#lab-3-opt_check3v)
+  - [Lab 4: opt_check4.v](#lab-4-opt_check4v)
+  - [Lab 5: multiple_module_opt.v](#lab-5-multiple_module_optv)
+- [3. Sequential Logic Optimization](#3-sequential-logic-optimization)
+- [5. Labs on Sequential Optimization](#5-labs-on-sequential-optimization)
+  - [Lab 1: dff_const1.v](#lab-1-dff_const1v)
+  - [Lab 2: dff_const2.v](#lab-2-dff_const2v)
+  - [Lab 3: dff_const3.v](#lab-3-dff_const3v)
+  - [Lab 4: dff_const4.v](#lab-4-dff_const4v)
+  - [Lab 5: dff_const5.v](#lab-5-dff_const5v)
+  - [Lab: counter_opt.v + tb_counter_opt.v](#lab-counter_optv--tb_counter_optv)
+  - [Lab: counter_opt2.v + tb_counter_opt.v](#lab-counter_opt2v--tb_counter_optv)
+- [7. Summary](#7-summary)
+
 
 
 ## 1. Introduction to Logic Optimization
