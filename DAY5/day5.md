@@ -2,6 +2,25 @@
 
  This section thoroughly explains optimization techniques related to `if-else` statements, case statements, partial assignments, and generation constructs in Verilog design. Each topic covers theory with detailed examples and practical implications.
 
+
+## Table of Contents
+
+- [1. If Statement Optimization](#1-if-statement-optimization)
+- [2. Partial Assignments and Case Statement Optimization](#2-partial-assignments-and-case-statement-optimization)
+- [3. Looping and Generate Constructs in Verilog](#3-looping-and-generate-constructs-in-verilog)
+
+- [Lab 1: incomp_if.v](#lab-1-incomp_ifv)
+- [Lab 2: incomp_if2.v](#lab-2-incomp_if2v)
+- [Lab 3: incomp_case.v](#lab-3-incomp_casev)
+- [Lab 4: bad_case.v](#lab-4-bad_casev)
+- [Lab 5: comp_case.v](#lab-5-comp_casev)
+- [Lab 7: mux_generate.v](#lab-7-mux_generatev)
+- [Lab 8: demux_case.v](#lab-8-demux_casev)
+- [Lab 9: demux_generate.v](#lab-9-demux_generatev)
+- [Lab 10: rca.v and fa.v](#lab-10-rcav-and-fav)
+
+- [8. Practical Considerations and Caveats](#8-practical-considerations-and-caveats)
+
 ---
 
 ## 1. If Statement Optimization
