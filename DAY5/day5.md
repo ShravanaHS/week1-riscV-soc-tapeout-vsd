@@ -387,63 +387,7 @@ quit
   <b>Synthesis result for incomplete case</b>
 </div>
 
-#### Lab 4: partial_case_assign.v
-
-Shows partial assignment causing inferred latches on outputs.
-
-**Verilog Code:**
-```
-module partial_case_assign (
-input i0, input i1, input i2,
-input [1:0] sel,
-output reg y, output reg x
-);
-always @(*) begin
-case(sel)
-2'b00: begin
-y = i0;
-x = i2;
-end
-2'b01: y = i1;
-default: begin
-x = i1;
-y = i2;
-end
-endcase
-end
-endmodule
-```
-
-**Simulation (RTL):**
-```
-iverilog -o partial_case_assign_sim partial_case_assign.v tb_partial_case_assign.v
-vvp partial_case_assign_sim
-gtkwave tb_partial_case_assign.vcd
-```
-<div align="center">
-   <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/incompcasewave.png"/>
-  <br>
-  <b>RTL waveform for partial case assignment</b>
-</div>
-
-**Yosys Synthesis:**
-```
-read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-read_verilog partial_case_assign.v
-synth -top partial_case_assign
-abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-write_verilog -noattr partial_case_assign_net.v
-quit
-```
-<div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/incompcasesyn.png"/>
-  <br>
-  <b>Synthesis result for partial case assignment</b>
-</div>
-
----
-
-#### Lab 5: bad_case.v
+#### Lab 4: bad_case.v
 
 Explores incomplete case handling with wildcards, showing risks in real hardware design.
 
@@ -495,7 +439,7 @@ quit
 
 ---
 
-#### Lab 6: comp_case.v
+#### Lab 5: comp_case.v
 
 Demonstrates correct case statement coding with full assignment (no latches inferred).
 
@@ -539,6 +483,221 @@ quit
   <br>
   <b>Synthesis result for complete case</b>
 </div>
+
+#### Lab 7: mux_generate.v
+
+This module demonstrates using a for loop inside an always block to implement a 4-to-1 multiplexer.
+
+**Verilog Code:**
+```
+module mux_generate (
+input i0, input i1, input i2, input
+i3, input [1
+0] sel,
+ut
+ut reg y ); wire
+3:0] i_int; assign i_int = {i3,
+2, i1, i0}
+integer k; alway
+@(*) begin for (k = 0; k < 4;
+= k + 1) beg
+n if
+k =
+se
+```
+
+**Simulation (RTL):**
+```
+iverilog -o mux_generate_sim mux_generate.v tb_mux_generate.v
+vvp mux_generate_sim
+```
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/muxsim.png"/>
+  <br>
+  <b>RTL waveform for mux_generate</b>
+</div>
+
+**Yosys Synthesis:**
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog mux_generate.v
+synth -top mux_generate
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+write_verilog -noattr mux_generate_net.v
+```
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/muxyn.png"/>
+  <br>
+  <b>Synthesis result for mux_generate</b>
+</div>
+
+---
+
+#### Lab 8: demux_case.v
+
+An 8-to-1 demultiplexer implemented with a case statement.
+
+**Verilog Code:**
+```
+module demux_case (
+output o0, output o1, output o2, output
+o3, output o4, output o5, output o6, ou
+put o7, inpu
+[2:0]
+el
+input i );
+eg [7:0] y_int; assign {o7, o6, o5, o4, o3, o2,
+1, o0} = y_int; a
+ways @(*) beg
+n y_i
+t = 8'b0; case(
+el) 3'b000 : y
+int = i; 3'b00
+: y_int = i;[6]
+3'b010 : y_int = i;[
+] 3'b011 : y_in
+= i;[8] 3'b100
+: y_int = i;[9]
+3'b101
+y_
+```
+**Simulation (RTL):**
+```
+iverilog -o demux_case_sim demux_case.v tb_demux_case.v
+vvp demux_case_sim
+```
+
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/demuxcasesim.png"/>
+  <br>
+  <b>RTL waveform for demux_case</b>
+</div>
+
+**Yosys Synthesis:**
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog demux_case.v
+synth -top demux_case
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+write_verilog -noattr demux_case_net.v
+```
+
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/demuxcasesyn.png"/>
+  <br>
+  <b>Synthesis result for demux_case</b>
+</div>
+
+---
+
+#### Lab 9: demux_generate.v
+
+Implements an 8-to-1 demultiplexer with a for loop in an always block, showcasing hardware generation by looping.
+
+**Verilog Code:**
+```
+module demux_generate (
+output o0, output o1, output o2, output
+o3, output o4, output o5, output o6, ou
+put o7, inpu
+[2:0]
+el
+input i );
+eg [7:0] y_int; assign {o7, o6, o5, o4, o3, o2,
+1, o0} = y
+int; integer k; a
+ways @(*) beg
+n y_int = 8'b0; for (k = 0;
+k < 8; k = k
+1) begin
+
+if
+```
+
+**Simulation (RTL):**
+```
+iverilog -o demux_generate_sim demux_generate.v tb_demux_generate.v
+vvp demux_generate_sim
+```
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/demuxsim.png"/>
+  <br>
+  <b>RTL waveform for demux_generate</b>
+</div>
+
+**Yosys Synthesis:**
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog demux_generate.v
+synth -top demux_generate
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+write_verilog -noattr demux_generate_net.v
+```
+
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/demuxsyn.png"/>
+  <br>
+  <b>Synthesis result for demux_generate</b>
+</div>
+
+---
+
+#### Lab 10: rca.v and fa.v
+
+Demonstrates an 8-bit Ripple Carry Adder (RCA) constructed using a generate for loop and full adder modules.
+
+**Ripple Carry Adder (rca.v):**
+```
+module rca (
+input [7:0] n
+m1, input [7:
+] num2, outp
+t
+8:0] sum ); wire [7
+genvar i;
+generate
+for (i = 1; i < 8; i = i + 1) b
+gin fa u_fa_1 (.a(num1[i]), .b(num2[i]), .c(int_co[i-1]), .co(int_co[i]), .sum(i
+t_s
+fa u_fa_0 (.a(num1), .b(num2), .c(1'b0), .co(int_co), .sum(int_sum));
+
+assign sum[7:0] = int_sum;
+assign sum = int_co;
+```
+
+**Full Adder (fa.v):**
+```
+module fa (input a, input b, input c, output co, output sum);
+assign {co, sum} = a + b
+```
+
+**Simulation (RTL):**
+```
+iverilog -o rca_sim rca.v fa.v tb_rca.v
+vvp rca_sim
+```
+
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/rcasim.png"/>
+  <br>
+  <b>RTL waveform for Ripple Carry Adder</b>
+</div>
+
+**Yosys Synthesis:**
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog rca.v fa.v
+synth -top rca
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+write_verilog -noattr rca_net.v
+```
+
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/rcasyn.png"/>
+  <br>
+  <b>Synthesis result for Ripple Carry Adder</b>
+</div>
+
 
 ---
 ### 8. Practical Considerations and Caveats
