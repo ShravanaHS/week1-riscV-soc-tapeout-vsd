@@ -138,7 +138,7 @@ endmodule
 Shows distributive property optimization.
 
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt4.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/optcheck4.png"/>
   <br>
   <b>optcheck4</b>
 </div>
