@@ -164,6 +164,89 @@ end
 This ensures each element is handled identically.
 
 ---
+
+### 3. Generate For Loops (Outside Always)
+
+A **generate for loop** is used in the top-level module or within a `generate` block to instantiate hardware elements (e.g., full adders in a ripple-carry adder, gates in a bus).
+
+- Uses the `genvar` keyword for synthesis-recognized iteration.
+- Not permitted inside always blocks.
+- Expand into actual Verilog code before synthesis—each iteration generates hardware.
+
+**Example:**
+```
+genvar i;
+generate
+for (i = 0; i < 4; i = i + 1) begin : gen_loop
+and_gate and_inst (.a(in[i]), .b(in[i+1]), .y(out[i]));
+end
+endgenerate
+```
+---
+
+### 4. Use Cases of Blocking Statements in Loops
+
+- **Blocking (`=`) assignments** are preferred within always @(*) loops for combinational hardware.
+- Ensure correct order of evaluation inside loops when intermediate results are used.
+
+**Example:**
+```
+always @(*) begin
+for (i = 0; i < 4; i = i + 1)
+y[i] = x[i] & c; // x[i] must be updated before being used elsewhere
+end
+```
+If assignment order matters, careful loop and blocking usage avoids unintended logic.
+
+---
+
+### 5. MUX and DEMUX Initialization and Implementation Using Loops
+
+- **For loops:** Commonly used to create MUX/DEMUX logic by iterating over inputs, selectors, or outputs.
+- **Initialization in always blocks:** Good practice to zero outputs before setting them inside loops; prevents inferred latches.
+
+**MUX Example:**
+```
+always @(*) begin
+y = 1'b0; // Safe default
+for (i = 0; i < 4; i = i + 1) begin
+if (i == sel)
+y = data[i];
+end
+end
+```
+
+**DEMUX Example:**
+```
+always @(*) begin
+y_int = 8'b0;
+for (i = 0; i < 8; i = i + 1) begin
+if (i == sel)
+y_int[i] = in;
+end
+end
+```
+
+---
+
+### 6. Ripple Carry Adder (RCA) with Generate Block
+
+An **RCA** is a classic n-bit adder implemented by chaining single-bit full adders: each carry-out feeds the next carry-in.
+
+- **generate for loop:** Instantiates each full adder dynamically for the required bit width.
+
+**Example (theory):**
+```
+genvar i;
+generate
+for (i = 0; i < N; i = i + 1) begin : rca
+fa u_fa (.a(A[i]), .b(B[i]), .cin(C[i]), .sum(S[i]), .cout(C[i+1]));
+end
+endgenerate
+```
+Where `fa` is a full adder module.
+
+---
 #### Lab 1: incomp_if.v
 
 This lab investigates the effect of incomplete if statements on synthesis and simulation in Verilog, highlighting latch inference.
@@ -290,6 +373,7 @@ gtkwave tb_incomp_if2.vcd
 </div>
 
 ---
+## 7. Lab Exercises
 
 #### Lab 3: incomp_case.v
 
@@ -555,91 +639,7 @@ gtkwave tb_comp_case.vcd
   <br>
   <b>GLS waveform for complete case</b>
 </div>
-
-### 3. Generate For Loops (Outside Always)
-
-A **generate for loop** is used in the top-level module or within a `generate` block to instantiate hardware elements (e.g., full adders in a ripple-carry adder, gates in a bus).
-
-- Uses the `genvar` keyword for synthesis-recognized iteration.
-- Not permitted inside always blocks.
-- Expand into actual Verilog code before synthesis—each iteration generates hardware.
-
-**Example:**
-```
-genvar i;
-generate
-for (i = 0; i < 4; i = i + 1) begin : gen_loop
-and_gate and_inst (.a(in[i]), .b(in[i+1]), .y(out[i]));
-end
-endgenerate
-```
----
-
-### 4. Use Cases of Blocking Statements in Loops
-
-- **Blocking (`=`) assignments** are preferred within always @(*) loops for combinational hardware.
-- Ensure correct order of evaluation inside loops when intermediate results are used.
-
-**Example:**
-```
-always @(*) begin
-for (i = 0; i < 4; i = i + 1)
-y[i] = x[i] & c; // x[i] must be updated before being used elsewhere
-end
-```
-If assignment order matters, careful loop and blocking usage avoids unintended logic.
-
----
-
-### 5. MUX and DEMUX Initialization and Implementation Using Loops
-
-- **For loops:** Commonly used to create MUX/DEMUX logic by iterating over inputs, selectors, or outputs.
-- **Initialization in always blocks:** Good practice to zero outputs before setting them inside loops; prevents inferred latches.
-
-**MUX Example:**
-```
-always @(*) begin
-y = 1'b0; // Safe default
-for (i = 0; i < 4; i = i + 1) begin
-if (i == sel)
-y = data[i];
-end
-end
-```
-
-**DEMUX Example:**
-```
-always @(*) begin
-y_int = 8'b0;
-for (i = 0; i < 8; i = i + 1) begin
-if (i == sel)
-y_int[i] = in;
-end
-end
-```
-
----
-
-### 6. Ripple Carry Adder (RCA) with Generate Block
-
-An **RCA** is a classic n-bit adder implemented by chaining single-bit full adders: each carry-out feeds the next carry-in.
-
-- **generate for loop:** Instantiates each full adder dynamically for the required bit width.
-
-**Example (theory):**
-```
-genvar i;
-generate
-for (i = 0; i < N; i = i + 1) begin : rca
-fa u_fa (.a(A[i]), .b(B[i]), .cin(C[i]), .sum(S[i]), .cout(C[i+1]));
-end
-endgenerate
-```
-Where `fa` is a full adder module.
-
----
-
-### 7. Practical Considerations and Caveats
+### 8. Practical Considerations and Caveats
 
 - **For loops** help scale, but always check that loop bounds are fixed and do not depend on run-time variables.
 - **Generate blocks** make hierarchical, parameterized, modular designs possible—especially useful for multipliers, adders, and scalable bus systems.
