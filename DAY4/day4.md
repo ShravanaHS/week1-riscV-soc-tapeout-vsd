@@ -75,6 +75,7 @@ text
 Example of 2:1 mux using ternary operator assigning `y = sel ? i1 : i0`.
 
 Yosys commands:
+```
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog ternary_operator_mux.v
 synth -top ternary_operator_mux
@@ -82,15 +83,15 @@ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 write_verilog -noattr ternary_operator_net.v
 quit
+```
 
-text
 
 Simulation commands:
+```
 iverilog -o ternary_operator_sim ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_net.v tb_ternary_operator_mux.v
 vvp ternary_operator_sim
 gtkwave tb_ternary_operator_mux.vcd
-
-text
+```
 
 *Insert simulation and synthesis screenshots here*
 
@@ -101,6 +102,7 @@ text
 MUX with incomplete sensitivity list and wrong assignment styles, demonstrating pitfalls.
 
 Yosys commands:
+```
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog bad_mux.v
 synth -top bad_mux
@@ -108,15 +110,13 @@ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 write_verilog -noattr bad_mux_net.v
 quit
-
-text
+```
 
 Simulation commands:
 iverilog -o bad_mux_sim ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux_net.v tb_bad_mux.v
 vvp bad_mux_sim
 gtkwave tb_bad_mux.vcd
-
-text
+```
 
 *Insert simulation and synthesis screenshots here*
 
