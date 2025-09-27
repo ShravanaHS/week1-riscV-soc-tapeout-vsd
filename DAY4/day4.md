@@ -126,9 +126,9 @@ vvp ternary_operator_sim
 gtkwave tb_ternary_operator_mux.vcd
 ```
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/ternarywave.png"/>
   <br>
-  <b>optcheck1</b>
+  <b>Ternary operator mux</b>
 </div>
 
 **Yosys Synthesis:**
@@ -141,9 +141,9 @@ write_verilog -noattr ternary_operator_net.v
 quit
 ```
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/ternaryoperatorsyn.png"/>
   <br>
-  <b>optcheck1</b>
+  <b>Ternary operator mux</b>
 </div>
 
 
@@ -158,9 +158,9 @@ vvp ternary_operator_sim_gls
 gtkwave tb_ternary_operator_mux.vcd
 ```
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/ternarywave.png"/>
   <br>
-  <b>optcheck1</b>
+  <b>Ternary operator mux</b>
 </div>
 
 
@@ -204,9 +204,9 @@ vvp bad_mux_sim
 gtkwave tb_bad_mux.vcd
 ```
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/badmuxbeforesyn.png"/>
   <br>
-  <b>optcheck1</b>
+  <b>Bad mux RTL Waveform</b>
 </div>
 
 **Yosys Synthesis:**
@@ -219,13 +219,6 @@ write_verilog -noattr bad_mux_net.v
 quit
 ```
 
-<div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
-  <br>
-  <b>optcheck1</b>
-</div>
-
-
 GLS: Use synthesized netlist + primitives
 ```
 iverilog -o bad_mux_sim_gls
@@ -237,11 +230,10 @@ vvp bad_mux_sim_gls
 gtkwave tb_bad_mux.vcd
 ```
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/badmuxaftsyn.png"/>
   <br>
-  <b>optcheck1</b>
+  <b>badmux after synthesis</b>
 </div>
-
 
 ---
 
@@ -269,19 +261,19 @@ end
 ```
 
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/beforesyncav.png"/>
   <br>
-  <b>optcheck1</b>
+  <b>Blocking caveat</b>
 </div>
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/cavaftersyn.png"/>
   <br>
-  <b>optcheck1</b>
+  <b>Blocking caveat after synthesis</b>
 </div>
 <div align="center">
-  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/syscav.png"/>
   <br>
-  <b>optcheck1</b>
+  <b>Blocking caveat</b>
 </div>
 
 
