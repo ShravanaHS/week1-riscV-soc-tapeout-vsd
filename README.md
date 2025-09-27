@@ -42,7 +42,6 @@ This week was dedicated to designing RTL modules, simulating and synthesizing th
 ---
 
 ### 📌 References
-- [VSD Official GitHub](https://github.com/vlsisystemdesign)
 - [RISC-V International](https://riscv.org)
 - [Linux Command Handbook](https://linuxcommand.org/)
 - [Yosys Open-Source Synthesis Tool](https://github.com/YosysHQ/yosys)
@@ -58,6 +57,4 @@ I sincerely thank:
 - Open-source developers for tools like **Yosys, Icarus Verilog, and GTKWave**.
 
 ---
-
-*This repository will be updated weekly with tasks, commands, outputs, and screenshots as I progress through the program.*
 
