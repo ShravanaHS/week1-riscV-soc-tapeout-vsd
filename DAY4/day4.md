@@ -125,6 +125,11 @@ iverilog -o ternary_operator_sim ternary_operator_mux.v tb_ternary_operator_mux.
 vvp ternary_operator_sim
 gtkwave tb_ternary_operator_mux.vcd
 ```
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <br>
+  <b>optcheck1</b>
+</div>
 
 **Yosys Synthesis:**
 ```
@@ -135,6 +140,12 @@ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 write_verilog -noattr ternary_operator_net.v
 quit
 ```
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <br>
+  <b>optcheck1</b>
+</div>
+
 
 GLS: Use synthesized netlist + primitives
 ```
@@ -146,7 +157,12 @@ tb_ternary_operator_mux.v
 vvp ternary_operator_sim_gls
 gtkwave tb_ternary_operator_mux.vcd
 ```
-*Insert simulation and synthesis waveforms.*
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <br>
+  <b>optcheck1</b>
+</div>
+
 
 ---
 
@@ -187,6 +203,11 @@ iverilog -o bad_mux_sim bad_mux.v tb_bad_mux.v
 vvp bad_mux_sim
 gtkwave tb_bad_mux.vcd
 ```
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <br>
+  <b>optcheck1</b>
+</div>
 
 **Yosys Synthesis:**
 ```
@@ -198,6 +219,11 @@ write_verilog -noattr bad_mux_net.v
 quit
 ```
 
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <br>
+  <b>optcheck1</b>
+</div>
 
 
 GLS: Use synthesized netlist + primitives
@@ -210,8 +236,12 @@ tb_bad_mux.v
 vvp bad_mux_sim_gls
 gtkwave tb_bad_mux.vcd
 ```
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <br>
+  <b>optcheck1</b>
+</div>
 
-*Insert comparison screenshots: show waveform mismatch between RTL and GLS due to coding error.*
 
 ---
 
@@ -238,10 +268,21 @@ d = x & c; // now uses updated x
 end
 ```
 
-*Insert waveforms showing bug and fix.*
-
-
-*Add your screenshots below each lab for full documentation of the learning process.*
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <br>
+  <b>optcheck1</b>
+</div>
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <br>
+  <b>optcheck1</b>
+</div>
+<div align="center">
+  <img src="https://github.com/ShravanaHS/week1-riscV-soc-tapeout-vsd/blob/main/images/opt1.png"/>
+  <br>
+  <b>optcheck1</b>
+</div>
 
 
 ## 5. Summary
